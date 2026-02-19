@@ -603,12 +603,6 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   box-shadow: var(--shadow-sm);
 }
 
-/* Scrollable on small screens */
-.content-wrap table {
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
 
 .content-wrap thead {
   background: var(--green-700);

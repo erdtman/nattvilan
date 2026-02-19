@@ -512,7 +512,6 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   max-height: 400px;
   overflow: hidden;
   background: var(--green-900);
-  margin-top: var(--nav-h);
 }
 
 .page-header-img {

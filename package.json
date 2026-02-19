@@ -1,0 +1,15 @@
+{
+  "name": "nattvilan",
+  "version": "1.0.0",
+  "description": "Nattvilan B&B static website",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "npx serve dist -p 3000"
+  },
+  "dependencies": {
+    "marked": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

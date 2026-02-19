@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="alternate" hreflang="{{LANG}}" href="{{CANONICAL}}">
+  <link rel="alternate" hreflang="{{ALT_LANG}}" href="{{ALT_CANONICAL}}">
+  <link rel="alternate" hreflang="x-default" href="https://nattvilan.se/en/">
+  <title>{{TITLE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ASSETS_PATH}}assets/style.css">
+  <script type="application/ld+json">{{JSON_LD}}</script>
+</head>
+<body class="page-section">
+
+  <!-- Site header -->
+  <header class="site-header scrolled" id="site-header">
+    <div class="header-inner">
+      <a href="{{HOME_URL}}" class="site-logo" aria-label="{{SITE_TITLE}} – startsida">{{SITE_TITLE}}</a>
+
+      <nav class="site-nav" aria-label="Huvudmeny">
+        {{NAV_ITEMS}}
+      </nav>
+
+      <div class="header-actions">
+        <a href="{{ALT_LANG_PATH}}" lang="{{ALT_LANG}}" class="lang-btn" title="{{ALT_LANG_LABEL}}">
+          <img src="{{ALT_LANG_ICON}}" alt="" aria-hidden="true" width="20" height="20">
+          {{ALT_LANG_LABEL}}
+        </a>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Öppna meny"
+          aria-controls="nav-drawer"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile nav drawer -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobilmeny">
+    {{NAV_ITEMS}}
+    <div class="drawer-lang">
+      <a href="{{ALT_LANG_PATH}}" lang="{{ALT_LANG}}" class="lang-btn">
+        <img src="{{ALT_LANG_ICON}}" alt="" aria-hidden="true" width="20" height="20">
+        {{ALT_LANG_LABEL}}
+      </a>
+    </div>
+  </nav>
+
+  <!-- Page header with section image -->
+  <div class="page-header" role="banner">
+    <div class="page-header-img" style="background-image: url('{{HEADER_IMAGE}}')"></div>
+    <div class="page-header-overlay" aria-hidden="true"></div>
+    <div class="page-header-content">
+      <h1 class="page-header-title">{{SECTION_TITLE}}</h1>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="main">
+    <div class="content-wrap">
+      {{CONTENT}}
+      <a href="{{BOOK_URL}}" class="page-book-cta">{{BOOK_LABEL}} →</a>
+    </div>
+  </main>
+
+  {{FOOTER}}
+
+  <script src="{{ASSETS_PATH}}assets/main.js"></script>
+</body>
+</html>

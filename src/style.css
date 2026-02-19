@@ -119,6 +119,7 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   text-decoration: none;
   letter-spacing: 0.01em;
   flex-shrink: 0;
+  margin-right: auto; /* push nav + actions to the right on all screen sizes */
   transition: opacity var(--duration) var(--ease);
 }
 .site-logo:hover { color: var(--white); opacity: 0.85; }
@@ -178,9 +179,7 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: auto;
 }
-.site-nav + .header-actions { margin-left: 0.5rem; }
 
 .lang-btn {
   display: flex;

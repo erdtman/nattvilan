@@ -592,6 +592,14 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   display: inline-block;
 }
 
+/* Table scroll wrapper (injected by JS) */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+}
+.table-wrap table { margin: 0; }
+
 /* Tables */
 .content-wrap table {
   width: 100%;

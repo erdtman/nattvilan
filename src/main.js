@@ -52,6 +52,14 @@
     });
   }
 
+  // ── Wrap tables for horizontal scroll on mobile ──────────────────────────
+  document.querySelectorAll('.content-wrap table').forEach(function (table) {
+    var wrap = document.createElement('div');
+    wrap.className = 'table-wrap';
+    table.parentNode.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  });
+
   // ── Hero slideshow ───────────────────────────────────────────────────────
   var slides = document.querySelectorAll('.hero-slide');
   if (slides.length > 1) {

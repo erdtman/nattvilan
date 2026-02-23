@@ -3,13 +3,22 @@
   "version": "1.0.0",
   "description": "Nattvilan B&B static website",
   "scripts": {
+    "fetch": "node fetch-docs.js",
     "build": "node build.js",
+    "fetch-build": "node fetch-docs.js && node build.js",
+    "deploy": "gh-pages -d dist",
+    "fetch-build-deploy": "node fetch-docs.js && node build.js && gh-pages -d dist",
     "serve": "npx serve dist -p 3000"
   },
   "dependencies": {
-    "marked": "^12.0.0"
+    "marked": "^12.0.0",
+    "turndown": "^7.2.2",
+    "turndown-plugin-gfm": "^1.0.2"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

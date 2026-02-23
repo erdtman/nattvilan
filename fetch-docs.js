@@ -17,12 +17,26 @@
 
 const https  = require('https');
 const fs     = require('fs');
+const path   = require('path');
 const TurndownService = require('turndown');
 const { tables }     = require('turndown-plugin-gfm');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
-const DOC_ID = '1fIM9SLyOoXb8XFOoK70QTJiykIpPgHCUoJgJO3c2ITI';
+// Load .env file if present
+const envFile = path.join(__dirname, '.env');
+if (fs.existsSync(envFile)) {
+  for (const line of fs.readFileSync(envFile, 'utf8').split('\n')) {
+    const [key, ...rest] = line.split('=');
+    if (key && rest.length) process.env[key.trim()] = rest.join('=').trim();
+  }
+}
+
+const DOC_ID = process.env.GOOGLE_DOC_ID;
+if (!DOC_ID) {
+  console.error('✗  GOOGLE_DOC_ID is not set. Copy .env.example to .env and fill in the doc ID.');
+  process.exit(1);
+}
 
 const OUTPUTS = {
   sv: 'swedish/index.md',
@@ -157,7 +171,7 @@ async function main() {
     const clean = flattenTableCells(stripAttributes(rawHtml));
     let md = td.turndown(clean);
     md = collapseBlankLines(md);
-    fs.mkdirSync(require('path').dirname(OUTPUTS[lang]), { recursive: true });
+    fs.mkdirSync(path.dirname(OUTPUTS[lang]), { recursive: true });
     fs.writeFileSync(OUTPUTS[lang], md, 'utf8');
     console.log(`✓  Written to ${OUTPUTS[lang]} (${md.length} chars)`);
   }

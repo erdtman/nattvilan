@@ -375,6 +375,9 @@ function build() {
   // Prevent Jekyll processing on GitHub Pages
   fs.writeFileSync(distFile('.nojekyll'), '', 'utf8');
 
+  // Custom domain for GitHub Pages
+  fs.copyFileSync('CNAME', distFile('CNAME'));
+
   const svData = parseMd('sv');
   const enData = parseMd('en');
 

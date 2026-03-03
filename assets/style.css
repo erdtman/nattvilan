@@ -121,6 +121,13 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   flex-shrink: 0;
   margin-right: auto; /* push nav + actions to the right on all screen sizes */
   transition: opacity var(--duration) var(--ease);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.site-logo-img {
+  height: 2.8rem;
+  width: auto;
 }
 .site-logo:hover { color: var(--white); opacity: 0.85; }
 
@@ -348,6 +355,18 @@ hr { border: none; border-top: 1px solid var(--green-100); margin: 2rem 0; }
   line-height: 1.1;
   text-shadow: 0 2px 20px rgba(0,0,0,0.4);
   margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 1.9em;
+  width: auto;
+  opacity: 0.5;
 }
 
 .hero-tagline {

@@ -424,6 +424,43 @@ ${fs.readFileSync(LANG_CONFIGS.en.mdFile, 'utf8').trim()}
   console.log(`✓  ${distFile('llms-full.txt')}`);
 }
 
+// ─── robots.txt + sitemap.xml ─────────────────────────────────────────────────
+//
+// robots.txt allows all crawlers, points to the sitemap, and (by convention,
+// as a comment) advertises the llms.txt guide for AI agents.
+
+function buildRobotsAndSitemap(svData, enData) {
+  const urls = [
+    LANG_CONFIGS.sv.homeUrl,
+    LANG_CONFIGS.en.homeUrl,
+    ...svData.sections.map(s => s.url),
+    ...enData.sections.map(s => s.url),
+  ];
+
+  const robots = `# robots.txt for ${SITE}
+User-agent: *
+Allow: /
+
+# AI agents: see ${SITE}/llms.txt for a concise, link-first site guide.
+
+Sitemap: ${SITE}/sitemap.xml
+`;
+  fs.writeFileSync(distFile('robots.txt'), robots, 'utf8');
+  console.log(`✓  ${distFile('robots.txt')}`);
+
+  const today = new Date().toISOString().slice(0, 10);
+  const entries = urls.map(u =>
+    `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`
+  ).join('\n');
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>
+`;
+  fs.writeFileSync(distFile('sitemap.xml'), sitemap, 'utf8');
+  console.log(`✓  ${distFile('sitemap.xml')}`);
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 function build() {
@@ -465,6 +502,9 @@ function build() {
 
   // AI agent guide
   buildLlmsTxt(svData, enData);
+
+  // Crawler files
+  buildRobotsAndSitemap(svData, enData);
 
   console.log('\nBuild complete. Run: npm run serve');
 }

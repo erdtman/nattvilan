@@ -59,6 +59,10 @@ the [llms.txt convention](https://llmstxt.org):
 Both are generated from the same Markdown as the HTML pages, so they always stay
 in sync with the Google Doc — no manual editing needed.
 
+The build also emits a `robots.txt` (allows all crawlers, points to the sitemap,
+and advertises `llms.txt`) and a `sitemap.xml` listing every page in both
+languages.
+
 ## NPM scripts
 
 | Command | Description |

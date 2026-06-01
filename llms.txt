@@ -1,0 +1,36 @@
+# Nattvilan
+
+> Nattvilan is a small, family-run hostel and timber house (Timmerhuset) in Skir, just outside Växjö in southern Sweden. We offer simple, comfortable rooms for 1–5 people in a quiet rural setting, with breakfast, farm animals, lakes, and forest walks nearby.
+
+The website is bilingual: Swedish is the default at https://nattvilan.se/ and English lives under https://nattvilan.se/en/. Each top-level section has its own page in both languages. To book a stay, use the booking page or contact us directly using the details below.
+
+## Pages (Svenska)
+
+- [Hem](https://nattvilan.se/): Vandrarhem och Timmerhuset i natursköna Skir, strax utanför Växjö. Boende för 1–5 personer. Frukost, djur, sjöar och natursköna promenadstigar.
+- [Boende](https://nattvilan.se/boende/): Vandrarhemsdelen innehåller fyra rum; tre 2-bäddsrum och ett 4-bäddsrum. Det finns en toalett med dusch, ett separat duschrum samt ytterligare en…
+- [Om gården](https://nattvilan.se/om-garden/): Nybygget i byn Skir ägs av oss, Åsa och Sven-Göran Erdtman. Gården består av ett tvåfamiljshus där vår son med familj bor på nedre planet, medan övre…
+- [Priser](https://nattvilan.se/priser/): Alla priser är per rum och natt. Städning ingår i priset.
+- [Bokning](https://nattvilan.se/bokning/): Bokning sker via e-post eller telefon. Ange antal personer, antal nätter samt önskade tillval (frukost, lakan). För transport till stationen, uppge…
+- [Hitta hit](https://nattvilan.se/hitta-hit/): Adress: Skir Nybygget 1 355 91 Växjö
+
+## Pages (English)
+
+- [Home](https://nattvilan.se/en/): Family-run hostel and Timber House in scenic Skir, just outside Växjö. Rooms for 1–5 persons with breakfast, animals, lakes, and forest walks.
+- [Accommodation](https://nattvilan.se/en/accommodation/): The hostel consists of four rooms: three twin rooms and one four-bedded room. There is one bathroom with a toilet and a shower, a separate shower…
+- [About the farm](https://nattvilan.se/en/about-the-farm/): Nybygget is located in the village of Skir and is owned by us, Åsa and Sven-Göran Erdtman. The property includes a two-family house with our son and…
+- [Prices](https://nattvilan.se/en/prices/): All prices are per room and per night. Cleaning is included.
+- [Booking](https://nattvilan.se/en/booking/): Reservations are made via email or phone. Please specify the number of guests, number of nights, and any add-ons (e.g. breakfast, bed linen). For…
+- [Getting here](https://nattvilan.se/en/getting-here/): Address: Skir Nybygget 1, 355 91 Växjö
+
+## Contact & details
+
+- Email: info@nattvilan.se
+- Phone: +46 70 598 0031, +46 70 444 1257
+- Address: Skir Nybygget 1, 355 91 Växjö, Sweden
+- Coordinates: 56.828152, 14.855422
+- Price range: SEK 425–880 per room/night
+- Type: Lodging business (hostel / bed & breakfast)
+
+## Optional
+
+- [Full site text](https://nattvilan.se/llms-full.txt): the complete text content of every page, in Swedish and English

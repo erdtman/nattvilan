@@ -1,0 +1,7 @@
+# robots.txt for https://nattvilan.se
+User-agent: *
+Allow: /
+
+# AI agents: see https://nattvilan.se/llms.txt for a concise, link-first site guide.
+
+Sitemap: https://nattvilan.se/sitemap.xml

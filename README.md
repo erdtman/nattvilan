@@ -47,6 +47,22 @@ npm run fetch-build-deploy
 
 This fetches the latest content, rebuilds the site, and publishes it to GitHub Pages in one step.
 
+## AI agent guide (llms.txt)
+
+The build also generates two plain-text files for LLMs and AI agents, following
+the [llms.txt convention](https://llmstxt.org):
+
+- `llms.txt` — a concise, link-first overview of the site (summary, page links
+  with descriptions, and contact details) served at <https://nattvilan.se/llms.txt>
+- `llms-full.txt` — the full text content of every page, Swedish and English
+
+Both are generated from the same Markdown as the HTML pages, so they always stay
+in sync with the Google Doc — no manual editing needed.
+
+The build also emits a `robots.txt` (allows all crawlers, points to the sitemap,
+and advertises `llms.txt`) and a `sitemap.xml` listing every page in both
+languages.
+
 ## NPM scripts
 
 | Command | Description |

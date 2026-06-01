@@ -352,6 +352,115 @@ function buildSectionPage(section, lang, allSections, altSection) {
   console.log(`✓  ${out}`);
 }
 
+// ─── llms.txt ───────────────────────────────────────────────────────────────
+//
+// A concise, link-first Markdown map of the site for LLMs / AI agents,
+// following the convention at https://llmstxt.org. Served at /llms.txt.
+// Generated from the same content as the pages so it never drifts.
+
+const SITE = 'https://nattvilan.se';
+
+function buildLlmsTxt(svData, enData) {
+  const link = (label, url, note) =>
+    `- [${label}](${SITE}${url})${note ? `: ${note}` : ''}`;
+
+  const svPages = [
+    link('Hem', LANG_CONFIGS.sv.homeUrl, LANG_CONFIGS.sv.homeDesc),
+    ...svData.sections.map(s => link(s.title, s.url, excerpt(s.html, 150))),
+  ].join('\n');
+
+  const enPages = [
+    link('Home', LANG_CONFIGS.en.homeUrl, LANG_CONFIGS.en.homeDesc),
+    ...enData.sections.map(s => link(s.title, s.url, excerpt(s.html, 150))),
+  ].join('\n');
+
+  const txt = `# Nattvilan
+
+> Nattvilan is a small, family-run hostel and timber house (Timmerhuset) in Skir, just outside Växjö in southern Sweden. We offer simple, comfortable rooms for 1–5 people in a quiet rural setting, with breakfast, farm animals, lakes, and forest walks nearby.
+
+The website is bilingual: Swedish is the default at ${SITE}/ and English lives under ${SITE}/en/. Each top-level section has its own page in both languages. To book a stay, use the booking page or contact us directly using the details below.
+
+## Pages (Svenska)
+
+${svPages}
+
+## Pages (English)
+
+${enPages}
+
+## Contact & details
+
+- Email: ${svData.email}
+- Phone: +46 70 598 0031, +46 70 444 1257
+- Address: Skir Nybygget 1, 355 91 Växjö, Sweden
+- Coordinates: 56.828152, 14.855422
+- Price range: SEK 425–880 per room/night
+- Type: Lodging business (hostel / bed & breakfast)
+
+## Optional
+
+- [Full site text](${SITE}/llms-full.txt): the complete text content of every page, in Swedish and English
+`;
+
+  fs.writeFileSync(distFile('llms.txt'), txt, 'utf8');
+  console.log(`✓  ${distFile('llms.txt')}`);
+
+  // Companion file with the full page text, for agents that want everything.
+  const full = `# Nattvilan — full site content
+
+> ${LANG_CONFIGS.en.homeDesc}
+
+# Svenska (${SITE}/)
+
+${fs.readFileSync(LANG_CONFIGS.sv.mdFile, 'utf8').trim()}
+
+---
+
+# English (${SITE}/en/)
+
+${fs.readFileSync(LANG_CONFIGS.en.mdFile, 'utf8').trim()}
+`;
+  fs.writeFileSync(distFile('llms-full.txt'), full, 'utf8');
+  console.log(`✓  ${distFile('llms-full.txt')}`);
+}
+
+// ─── robots.txt + sitemap.xml ─────────────────────────────────────────────────
+//
+// robots.txt allows all crawlers, points to the sitemap, and (by convention,
+// as a comment) advertises the llms.txt guide for AI agents.
+
+function buildRobotsAndSitemap(svData, enData) {
+  const urls = [
+    LANG_CONFIGS.sv.homeUrl,
+    LANG_CONFIGS.en.homeUrl,
+    ...svData.sections.map(s => s.url),
+    ...enData.sections.map(s => s.url),
+  ];
+
+  const robots = `# robots.txt for ${SITE}
+User-agent: *
+Allow: /
+
+# AI agents: see ${SITE}/llms.txt for a concise, link-first site guide.
+
+Sitemap: ${SITE}/sitemap.xml
+`;
+  fs.writeFileSync(distFile('robots.txt'), robots, 'utf8');
+  console.log(`✓  ${distFile('robots.txt')}`);
+
+  const today = new Date().toISOString().slice(0, 10);
+  const entries = urls.map(u =>
+    `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`
+  ).join('\n');
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>
+`;
+  fs.writeFileSync(distFile('sitemap.xml'), sitemap, 'utf8');
+  console.log(`✓  ${distFile('sitemap.xml')}`);
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 function build() {
@@ -390,6 +499,12 @@ function build() {
     buildSectionPage(svData.sections[i], 'sv', svData.sections, enData.sections[i]);
     buildSectionPage(enData.sections[i], 'en', enData.sections, svData.sections[i]);
   }
+
+  // AI agent guide
+  buildLlmsTxt(svData, enData);
+
+  // Crawler files
+  buildRobotsAndSitemap(svData, enData);
 
   console.log('\nBuild complete. Run: npm run serve');
 }
